@@ -345,3 +345,76 @@ document.querySelectorAll('footer .flex.gap-3 a').forEach((icon, i) => {
     icon.style.transform = '';
   });
 });
+/* ─── TERN-STYLE SCROLL REVEAL (images + cards + content) ── */
+(function () {
+  const style = document.createElement('style');
+  style.textContent = `
+    .sr-hidden {
+      opacity: 0.06;
+      filter: blur(3px);
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, filter 0.8s ease, transform 0.8s cubic-bezier(0.22,1,0.36,1);
+      will-change: opacity, filter, transform;
+    }
+    .sr-hidden.sr-visible {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translateY(0);
+    }
+  `;
+  document.head.appendChild(style);
+
+  const selectors = [
+    /* text */
+    'section h2', 'section h3', 'section h4',
+    'section > div > p', 'section > div > div > p',
+    'section > div > ul', 'section > div > div > ul',
+    'section span.text-gold-500', 'section span.text-gold-400',
+    /* images */
+    'section img',
+    'section picture',
+    /* grid / flex children (covers photo cards, info cards, stat cards…) */
+    'section .grid > *',
+    'section [class*="card"]',
+    'section [class*="step"]',
+    'section [class*="stat"]',
+    'section [class*="banner"]',
+    'section [class*="why-card"]',
+    'section [class*="process"]',
+    'section [class*="service"]',
+    /* promise / photo tiles that use bg images */
+    'section .rounded-2xl',
+    'section .rounded-3xl',
+    'section .rounded-xl'
+  ];
+
+  const seen = new WeakSet();
+
+  selectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => {
+      if (seen.has(el)) return;
+      if (el.closest('#navbar') || el.closest('header') || el.closest('footer')) return;
+      if (el.classList.contains('reveal')) return;
+      // Don't wrap a parent whose direct children are already targeted
+      if ([...el.children].some(child => seen.has(child))) return;
+
+      seen.add(el);
+
+      const siblings = Array.from(el.parentElement?.children || []);
+      const idx = siblings.indexOf(el);
+      const delay = Math.min(idx * 0.12, 0.48);
+      el.style.transitionDelay = `${delay}s`;
+      el.classList.add('sr-hidden');
+
+      const obs = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('sr-visible');
+        } else {
+          entry.target.classList.remove('sr-visible');
+        }
+      }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+      obs.observe(el);
+    });
+  });
+})();
