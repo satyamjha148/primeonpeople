@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxembourg – Employers | PrimeOnPeople</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── NAVBAR ── */
+    #navbar {
+      background: #ffffff !important;
+      box-shadow: 0 2px 20px rgba(10,22,40,0.08) !important;
+      border-bottom: 1px solid rgba(201,168,76,0.18) !important;
+      transition: box-shadow 0.3s ease, padding 0.3s ease;
+    }
+    #navbar .nav-link { color: #1A2E4A !important; transition: color 0.25s ease; }
+    #navbar .nav-link:hover { color: #C9A84C !important; }
+    #navbar .logo-text { color: #1A2E4A !important; }
+    #navbar #mobile-menu-btn { color: #1A2E4A !important; }
+    #navbar.scrolled {
+      box-shadow: 0 4px 30px rgba(10,22,40,0.13) !important;
+      padding-top: 10px !important;
+      padding-bottom: 10px !important;
+    }
+
+    /* ── HERO BG ── */
+    .luxembourg-hero-bg {
+      background-image: url('https://images.unsplash.com/photo-1562672045-9f83a0eb8872?w=1920&q=80');
+      background-size: cover;
+      background-position: center 50%;
+      background-attachment: fixed;
+    }
+    @media (max-width: 767px) { .luxembourg-hero-bg { background-attachment: scroll; } }
+
+    /* ── INFO CARDS ── */
+    .info-card {
+      background: #ffffff;
+      border: 1px solid #f0f0f0;
+      border-radius: 20px;
+      padding: 2rem;
+      transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease;
+    }
+    .info-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 60px rgba(10,22,40,0.11);
+    }
+
+    /* ── BULLET CHECK LIST ── */
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 0.6rem 0;
+      color: #374151;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .check-list li:last-child { border-bottom: none; }
+    .check-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1A2E4A, #2a4a7a);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+      background-size: 12px;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin-top: 2px;
+    }
+
+    /* ── SECTION DIVIDER ── */
+    .section-divider {
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, #C9A84C, #E0C97A);
+      border-radius: 2px;
+      margin: 1rem 0 1.5rem;
+    }
+
+    /* ── STAT CARD ── */
+    .stat-card {
+      background: linear-gradient(135deg, #1A2E4A 0%, #142850 100%);
+      border-radius: 20px;
+      padding: 2rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.08);
+    }
+    .stat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 50px rgba(10,22,40,0.25);
+    }
+
+    /* ── FORM INPUT ── */
+    .form-input {
+      border: none;
+      border-bottom: 1px solid #d1d5db;
+      outline: none;
+      width: 100%;
+      padding: 8px 0;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      background: transparent;
+      transition: border-color 0.25s;
+    }
+    .form-input:focus { border-bottom-color: #C9A84C; }
+    .form-input::placeholder { color: #9ca3af; font-size: 0.8rem; }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── HERO FADE IN ── */
+    .hero-fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroFadeIn 0.8s forwards;
+    }
+    @keyframes heroFadeIn { to { opacity: 1; transform: translateY(0); } }
+
+    /* ── GRID OVERLAY ── */
+    .grid-overlay {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* ── ORB ── */
+    .orb { position: absolute; border-radius: 50%; pointer-events: none; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-20px); }
+    }
+
+    /* ── SCROLL LINE ── */
+    @keyframes scrollDown {
+      0%   { transform: scaleY(0); transform-origin: top; }
+      50%  { transform: scaleY(1); transform-origin: top; }
+      51%  { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+    .scroll-line { animation: scrollDown 1.8s ease-in-out infinite; }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { 900: '#1A2E4A', 800: '#1F3A5C', 700: '#142850', 600: '#1a3566' },
+            gold: { 400: '#C9A84C', 500: '#B8922A', 300: '#E0C97A' },
+          },
+          fontFamily: {
+            display: ['Cormorant Garamond', 'serif'],
+            body: ['DM Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-white font-body overflow-x-hidden">
+
+  <!-- ─── NAVBAR ─────────────────────────────────────────── -->
+  <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4">
+    <div class="nav-container w-full px-6 md:px-10 lg:px-14 flex items-center">
+      <a href="index.html" class="flex items-center gap-3 group flex-shrink-0">
+        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md overflow-hidden border border-gold-400/30">
+          <img src="logo.png" alt="Logo" class="w-8 h-8 object-contain" />
+        </div>
+        <span class="logo-text font-display text-xl font-semibold whitespace-nowrap">PrimeOnPeople</span>
+      </a>
+
+      <nav class="hidden md:flex flex-1 items-center justify-center gap-6 lg:gap-10">
+        <a href="index.html"     class="nav-link text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold-400 hover:after:w-full after:transition-all pb-0.5">Home</a>
+        <a href="about.html"     class="nav-link text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold-400 hover:after:w-full after:transition-all pb-0.5">About</a>
+        <a href="employers.html" class="nav-link active text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-gold-400 pb-0.5">Global Employers</a>
+        <a href="jobs.html"      class="nav-link text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold-400 hover:after:w-full after:transition-all pb-0.5">Jobs</a>
+        <a href="contact.html"   class="nav-link text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold-400 hover:after:w-full after:transition-all pb-0.5">Contact</a>
+      </nav>
+
+      <a href="jobs.html" class="hidden md:inline-flex flex-shrink-0 items-center gap-2 bg-gold-400 hover:bg-gold-300 text-navy-900 text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(201,168,76,0.5)] hover:-translate-y-0.5 whitespace-nowrap">
+        View Jobs
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+
+      <div class="md:hidden ml-auto flex items-center gap-3">
+        <a href="jobs.html" class="inline-flex items-center gap-1.5 bg-gold-400 text-navy-900 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap">
+          View Jobs <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <button id="mobile-menu-btn" class="p-1.5 rounded-lg hover:bg-gray-100 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg mt-1 px-6 py-5 space-y-1">
+      <a href="index.html"     class="flex items-center gap-3 text-navy-900 text-sm py-2.5 px-3 rounded-lg hover:bg-gray-50 hover:text-gold-400 transition-all">Home</a>
+      <a href="about.html"     class="flex items-center gap-3 text-navy-800 text-sm py-2.5 px-3 rounded-lg hover:bg-gray-50 hover:text-gold-400 transition-all">About</a>
+      <a href="employers.html" class="flex items-center gap-3 text-gold-400 font-semibold text-sm py-2.5 px-3 rounded-lg bg-gold-400/5">Global Employers</a>
+      <a href="jobs.html"      class="flex items-center gap-3 text-navy-800 text-sm py-2.5 px-3 rounded-lg hover:bg-gray-50 hover:text-gold-400 transition-all">Jobs</a>
+      <a href="contact.html"   class="flex items-center gap-3 text-navy-800 text-sm py-2.5 px-3 rounded-lg hover:bg-gray-50 hover:text-gold-400 transition-all">Contact</a>
+    </div>
+  </header>
+
+  <!-- ─── PAGE HERO ─────────────────────────────────────── -->
+  <section class="relative overflow-hidden bg-navy-900" style="padding-top: 64px;">
+    <div class="absolute inset-0 luxembourg-hero-bg"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-navy-900/88 via-navy-900/60 to-navy-900/25"></div>
+    <div class="absolute inset-0 grid-overlay opacity-10"></div>
+    <div class="orb" style="width:400px;height:400px;background:radial-gradient(circle,rgba(201,168,76,0.10),transparent 70%);top:0;right:-5%;animation:float 9s ease-in-out infinite;"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-20">
+      <!-- Breadcrumb -->
+      <div class="flex items-center gap-2 mb-7 hero-fade-in" style="animation-delay:0.15s">
+        <a href="index.html" class="text-white/50 text-xs hover:text-gold-300 transition-colors">Home</a>
+        <svg class="w-3 h-3 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <a href="employers.html" class="text-white/50 text-xs hover:text-gold-300 transition-colors">Global Employers</a>
+        <svg class="w-3 h-3 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-gold-300 text-xs">Luxembourg</span>
+      </div>
+
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-gold-400/30 rounded-full px-4 py-1.5 mb-7 hero-fade-in" style="animation-delay:0.2s">
+        <span class="w-2 h-2 bg-gold-400 rounded-full animate-pulse"></span>
+        <span class="text-gold-300 text-xs font-medium tracking-widest uppercase">Luxembourg – Employeurs</span>
+      </div>
+
+      <!-- Flag + Heading -->
+      <div class="flex items-start gap-6 flex-wrap hero-fade-in" style="animation-delay:0.35s">
+        <!-- Luxembourg flag -->
+        <div class="flex flex-col justify-center rounded-xl overflow-hidden shadow-lg border border-white/20 flex-shrink-0" style="width:64px;height:46px;">
+          <div class="flex-1 bg-[#EF3340]"></div>
+          <div class="flex-1 bg-[#ffffff]"></div>
+          <div class="flex-1 bg-[#00A3E0]"></div>
+        </div>
+        <h1 class="font-display text-5xl md:text-7xl font-light text-white leading-[1.05]">
+          Accès aux talents<br/>
+          <em class="font-semibold text-gold-300 not-italic">internationaux</em>
+        </h1>
+      </div>
+
+      <p class="text-white/60 text-lg mt-6 max-w-2xl leading-relaxed hero-fade-in" style="animation-delay:0.55s">
+        PrimeOnPeople accompagne les employeurs luxembourgeois en leur donnant accès à des talents internationaux qualifiés, sélectionnés selon les exigences professionnelles et réglementaires du Luxembourg.
+      </p>
+      <div class="flex flex-wrap gap-4 mt-8 hero-fade-in" style="animation-delay:0.7s">
+        <a href="#contact-form" class="inline-flex items-center gap-2 bg-gold-400 hover:bg-gold-300 text-navy-900 font-semibold text-sm px-7 py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(201,168,76,0.5)]">
+          Échangez avec notre équipe
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="employers.html" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-medium text-sm px-7 py-4 rounded-full transition-all duration-300 hover:-translate-y-1">
+          ← Back to All Markets
+        </a>
+      </div>
+    </div>
+
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hero-fade-in" style="animation-delay:0.9s">
+      <span class="text-white/40 text-xs tracking-widest uppercase">Scroll</span>
+      <div class="w-px h-10 bg-gradient-to-b from-white/40 to-transparent scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ─── INTRO + STATS ─────────────────────────────────── -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+        <!-- Left: Intro text -->
+        <div class="reveal">
+          <span class="text-gold-500 text-xs font-semibold tracking-widest uppercase">Aperçu</span>
+          <div class="section-divider"></div>
+          <h2 class="font-display text-4xl md:text-5xl font-light text-navy-900 leading-tight">
+            Le marché <em class="font-semibold not-italic">luxembourgeois</em>
+          </h2>
+          <p class="text-gray-500 text-base leading-relaxed mt-6">
+            L'économie internationale du Luxembourg repose sur des professionnels expérimentés capables d'évoluer dans des environnements réglementés, techniques et multiculturels. PrimeOnPeople accompagne les employeurs en leur donnant accès à des talents internationaux qualifiés, sélectionnés selon les exigences professionnelles et réglementaires du Luxembourg.
+          </p>
+          <p class="text-gray-500 text-base leading-relaxed mt-4">
+            PrimeOnPeople recrute des professionnels qualifiés en Inde — l'un des marchés de talents les plus établis au monde — afin de soutenir les employeurs luxembourgeois dans les secteurs de la finance, de la technologie, de la logistique et d'autres fonctions spécialisées.
+          </p>
+        </div>
+
+        <!-- Right: Key stats -->
+        <div class="grid grid-cols-2 gap-5 reveal" style="animation-delay:0.15s">
+          <div class="stat-card">
+            <p class="text-gold-300 text-xs tracking-widest uppercase mb-1">Secteurs</p>
+            <p class="font-display text-3xl font-semibold text-white">4+</p>
+            <p class="text-white/50 text-sm mt-1">Domaines clés</p>
+          </div>
+          <div class="stat-card">
+            <p class="text-gold-300 text-xs tracking-widest uppercase mb-1">Candidats</p>
+            <p class="font-display text-3xl font-semibold text-white">100%</p>
+            <p class="text-white/50 text-sm mt-1">Vérifiés & qualifiés</p>
+          </div>
+          <div class="stat-card col-span-2">
+            <p class="text-gold-300 text-xs tracking-widest uppercase mb-1">Source de talents</p>
+            <p class="font-display text-2xl font-semibold text-white">Inde → Luxembourg</p>
+            <p class="text-white/50 text-sm mt-1">L'un des marchés de talents les plus établis au monde</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── RECRUITMENT TRENDS ───────────────────────────── -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+        <div class="reveal">
+          <span class="text-gold-500 text-xs font-semibold tracking-widest uppercase">Tendances</span>
+          <div class="section-divider"></div>
+          <h2 class="font-display text-4xl md:text-5xl font-light text-navy-900 leading-tight">
+            Tendances de recrutement<br/><em class="font-semibold not-italic">au Luxembourg</em>
+          </h2>
+          <p class="text-gray-500 text-base leading-relaxed mt-6">
+            La demande reste forte pour des professionnels expérimentés capables de travailler dans des environnements multinationaux, réglementés et multilingues. Le recrutement international joue un rôle clé dans le soutien à la croissance des entreprises et au maintien de la continuité opérationnelle.
+          </p>
+          <p class="text-gray-500 text-base leading-relaxed mt-4">
+            Les employeurs recherchent des candidats immédiatement opérationnels, disposant de compétences techniques solides et d'une compréhension des standards professionnels européens.
+          </p>
+        </div>
+
+        <!-- Visual accent card -->
+        <div class="reveal" style="animation-delay:0.15s">
+          <div class="bg-navy-900 rounded-3xl p-10 relative overflow-hidden h-full min-h-[320px] flex flex-col justify-end">
+            <div class="orb" style="width:280px;height:280px;background:radial-gradient(circle,rgba(201,168,76,0.12),transparent 70%);top:-60px;right:-60px;position:absolute;"></div>
+            <!-- Luxembourg flag stripe accent -->
+            <div class="flex rounded-full overflow-hidden mb-6" style="width:56px;height:8px;">
+              <div class="flex-1 bg-[#EF3340]"></div>
+              <div class="flex-1 bg-white"></div>
+              <div class="flex-1 bg-[#00A3E0]"></div>
+            </div>
+            <p class="text-gold-300 text-xs font-semibold tracking-widest uppercase mb-3">Marché de référence</p>
+            <p class="font-display text-3xl font-light text-white leading-snug">
+              Un hub financier &amp;<br/><em class="font-semibold">technologique mondial</em>
+            </p>
+            <p class="text-white/45 text-sm mt-4 leading-relaxed max-w-xs">
+              Le Luxembourg est l'un des centres financiers les plus dynamiques d'Europe, avec une forte demande de talents multilingues et spécialisés.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ROLES & PROFILES ─────────────────────────────── -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-14 reveal">
+        <span class="text-gold-500 text-xs font-semibold tracking-widest uppercase">Compétences</span>
+        <h2 class="font-display text-5xl md:text-6xl font-light text-navy-900 mt-3 leading-tight">
+          Profils et compétences <em class="font-semibold not-italic">fréquemment recrutés</em>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Finance -->
+        <div class="info-card reveal" style="animation-delay:0.05s">
+          <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-semibold text-navy-900 mb-3">Services Financiers</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Professionnels des services financiers et de l'administration de fonds.</p>
+        </div>
+
+        <!-- IT -->
+        <div class="info-card reveal" style="animation-delay:0.1s">
+          <div class="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-semibold text-navy-900 mb-3">IT & Technologies</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Spécialistes IT et technologies pour des environnements multiculturels exigeants.</p>
+        </div>
+
+        <!-- Logistics -->
+        <div class="info-card reveal" style="animation-delay:0.15s">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-semibold text-navy-900 mb-3">Logistique</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Professionnels de la logistique et de la chaîne d'approvisionnement.</p>
+        </div>
+
+        <!-- Tailored -->
+        <div class="info-card reveal bg-navy-900 border-navy-900" style="animation-delay:0.2s">
+          <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-semibold text-white mb-3">Sur mesure</h3>
+          <p class="text-white/60 text-sm leading-relaxed">Le recrutement est mené en fonction des exigences spécifiques des postes, de l'expérience professionnelle et des cadres réglementaires applicables.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── HOW WE SUPPORT + WHY US ──────────────────────── -->
+  <section class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+        <!-- How we support -->
+        <div class="reveal">
+          <span class="text-gold-500 text-xs font-semibold tracking-widest uppercase">Notre approche</span>
+          <div class="section-divider"></div>
+          <h2 class="font-display text-4xl font-light text-navy-900 leading-tight mb-8">
+            Comment PrimeOnPeople accompagne<br/><em class="font-semibold not-italic">les employeurs luxembourgeois</em>
+          </h2>
+          <ul class="check-list space-y-1">
+            <li>Développement continu de viviers de talents internationaux</li>
+            <li>Vérification de l'expérience et des qualifications</li>
+            <li>Coordination structurée des entretiens</li>
+            <li>Accompagnement dans le processus de recrutement et la préparation à l'intégration</li>
+            <li>Notre approche vise à garantir des recrutements fiables, conformes et adaptés aux besoins des employeurs</li>
+          </ul>
+        </div>
+
+        <!-- Why us -->
+        <div class="reveal" style="animation-delay:0.15s">
+          <span class="text-gold-500 text-xs font-semibold tracking-widest uppercase">Nos avantages</span>
+          <div class="section-divider"></div>
+          <h2 class="font-display text-4xl font-light text-navy-900 leading-tight mb-8">
+            Pourquoi travailler<br/><em class="font-semibold not-italic">avec nous</em>
+          </h2>
+          <ul class="check-list space-y-1">
+            <li>Accès à des talents internationaux préparés, vérifiés linguistiquement et qualifiés</li>
+            <li>Viviers de candidats par rôle – des débutants aux experts expérimentés</li>
+            <li>Processus de recrutement clairs et structurés</li>
+            <li>Communication continue et focus sur la planification durable des ressources humaines</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA BANNER ────────────────────────────────────── -->
+  <section class="py-20 bg-navy-900 relative overflow-hidden">
+    <div class="orb" style="width:500px;height:500px;background:radial-gradient(circle,rgba(201,168,76,0.08),transparent 70%);top:-100px;right:-100px;"></div>
+    <div class="orb" style="width:300px;height:300px;background:radial-gradient(circle,rgba(201,168,76,0.06),transparent 70%);bottom:-50px;left:-50px;"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center reveal">
+      <span class="text-gold-300 text-xs font-semibold tracking-widest uppercase">Commencer</span>
+      <h2 class="font-display text-5xl md:text-6xl font-light text-white mt-4 leading-tight">
+        Prêt à trouver vos<br/><em class="font-semibold text-gold-300 not-italic">talents internationaux ?</em>
+      </h2>
+      <p class="text-white/50 text-lg mt-6 max-w-2xl mx-auto leading-relaxed">
+        Nous accompagnons les organisations qui planifient un recrutement international au Luxembourg, avec une approche structurée et orientée résultats.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 mt-10">
+        <a href="#contact-form" class="inline-flex items-center gap-2 bg-gold-400 hover:bg-gold-300 text-navy-900 font-semibold text-sm px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(201,168,76,0.5)]">
+          Échangez avec notre équipe
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="employers.html" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-medium text-sm px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-1">
+          Voir tous les marchés
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT FORM ──────────────────────────────────── -->
+  <section id="contact-form" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+        <!-- Left: text -->
+        <div class="reveal">
+          <span class="text-gold-500 text-xs font-semibold tracking-widest uppercase">Échangez avec nous</span>
+          <h2 class="font-display text-5xl md:text-6xl font-light text-navy-900 mt-3 leading-tight">
+            Discutons de vos<br/><em class="font-semibold not-italic">besoins en recrutement</em>
+          </h2>
+          <p class="text-gray-500 text-base leading-relaxed mt-7 max-w-md">
+            Si vous planifiez le recrutement de professionnels internationaux au Luxembourg, notre équipe est disponible pour discuter de la manière dont PrimeOnPeople peut soutenir vos besoins en main-d'œuvre.
+          </p>
+          <div class="mt-10 space-y-5">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-navy-900/5 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400 uppercase tracking-wider">Email</p>
+                <p class="text-navy-900 text-sm font-medium mt-0.5">info@primeonpeople.com</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-navy-900/5 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400 uppercase tracking-wider">Tel</p>
+                <p class="text-navy-900 text-sm font-medium mt-0.5">123-456-7890</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div class="reveal" style="animation-delay:0.2s">
+          <div class="bg-white border border-gray-100 rounded-2xl p-10 shadow-xl">
+            <h3 class="font-body font-semibold text-navy-900 text-lg mb-8">Contactez-nous</h3>
+            <form class="space-y-7" onsubmit="return false;">
+              <div class="grid grid-cols-2 gap-6">
+                <div>
+                  <label class="text-xs text-gray-400 uppercase tracking-wider block mb-1">Prénom <span class="text-red-400">*</span></label>
+                  <input type="text" class="form-input" placeholder="Prénom" required />
+                </div>
+                <div>
+                  <label class="text-xs text-gray-400 uppercase tracking-wider block mb-1">Nom <span class="text-red-400">*</span></label>
+                  <input type="text" class="form-input" placeholder="Nom de famille" required />
+                </div>
+              </div>
+              <div>
+                <label class="text-xs text-gray-400 uppercase tracking-wider block mb-1">Email <span class="text-red-400">*</span></label>
+                <input type="email" class="form-input" placeholder="votre@email.com" required />
+              </div>
+              <div>
+                <label class="text-xs text-gray-400 uppercase tracking-wider block mb-1">Entreprise / Organisation</label>
+                <input type="text" class="form-input" placeholder="Nom de l'entreprise" />
+              </div>
+              <div>
+                <label class="text-xs text-gray-400 uppercase tracking-wider block mb-1">Votre message</label>
+                <textarea class="form-input resize-none h-28" placeholder="Décrivez vos besoins en recrutement pour le Luxembourg..."></textarea>
+              </div>
+              <button type="submit" class="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-navy-900 hover:bg-navy-700 text-white font-semibold text-sm px-10 py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                Envoyer
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────── -->
+  <footer class="bg-navy-900 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+              <svg viewBox="0 0 40 40" class="w-7 h-7" fill="none"><path d="M12 20 A8 8 0 0 1 28 20" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/><circle cx="20" cy="12" r="3" fill="#C9A84C"/><circle cx="20" cy="28" r="2" fill="white"/><path d="M14 26 L26 26" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <span class="font-display text-xl font-semibold text-white">PrimeOnPeople</span>
+          </div>
+          <p class="text-white/40 text-sm leading-relaxed max-w-xs">Global Careers. Trusted International Hiring. Connecting skilled professionals with world-class employers across the globe.</p>
+          <div class="flex gap-3 mt-6">
+            <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold-400 hover:text-navy-900 text-white/60 transition-all duration-300">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold-400 hover:text-navy-900 text-white/60 transition-all duration-300">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold-400 hover:text-navy-900 text-white/60 transition-all duration-300">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-5 tracking-wider uppercase">Menu</h4>
+          <ul class="space-y-3">
+            <li><a href="index.html"     class="text-white/40 text-sm hover:text-gold-300 transition-colors">Home</a></li>
+            <li><a href="about.html"     class="text-white/40 text-sm hover:text-gold-300 transition-colors">About</a></li>
+            <li><a href="employers.html" class="text-gold-300 text-sm">Global Employers</a></li>
+            <li><a href="jobs.html"      class="text-white/40 text-sm hover:text-gold-300 transition-colors">Jobs</a></li>
+            <li><a href="contact.html"   class="text-white/40 text-sm hover:text-gold-300 transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-5 tracking-wider uppercase">Contact</h4>
+          <ul class="space-y-3 text-white/40 text-sm">
+            <li class="flex gap-2">
+              <svg class="w-4 h-4 mt-0.5 text-gold-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span>Wave City Ghaziabad, Uttar Pradesh 201001<br/>Tilak Nagar – New Delhi 110018</span>
+            </li>
+            <li class="flex gap-2">
+              <svg class="w-4 h-4 mt-0.5 text-gold-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <span>info@primeonpeople.com</span>
+            </li>
+            <li class="flex gap-2">
+              <svg class="w-4 h-4 mt-0.5 text-gold-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              <span>123-456-7890</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-white/25 text-xs">© 2025 PrimeOnPeople. All rights reserved.</p>
+        <p class="text-white/25 text-xs">International Recruitment · Luxembourg</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = parseFloat(entry.target.style.animationDelay || '0') * 1000;
+          setTimeout(() => entry.target.classList.add('visible'), delay);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    reveals.forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>

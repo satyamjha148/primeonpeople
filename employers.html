@@ -224,13 +224,7 @@
     <div class="nav-container w-full px-6 md:px-10 lg:px-14 flex items-center">
       <a href="index.html" class="flex items-center gap-3 group flex-shrink-0">
         <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md overflow-hidden border border-gold-400/30">
-          <svg viewBox="0 0 40 40" class="w-8 h-8" fill="none">
-            <circle cx="20" cy="20" r="18" fill="#1A2E4A"/>
-            <path d="M12 20 A8 8 0 0 1 28 20" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
-            <circle cx="20" cy="12" r="3" fill="#C9A84C"/>
-            <circle cx="20" cy="28" r="2" fill="white"/>
-            <path d="M14 26 L26 26" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+          <img src="logo.png" alt="Logo" class="w-8 h-8 object-contain" />
         </div>
         <span class="logo-text font-display text-xl font-semibold whitespace-nowrap">PrimeOnPeople</span>
       </a>
@@ -319,69 +313,82 @@
 
       <div class="flex flex-wrap justify-center gap-8">
         <!-- Germany -->
-        <div class="flag-card text-center reveal" style="animation-delay:0.1s">
+      <a href="germany.html" class="flag-card text-center reveal" style="animation-delay:0.1s">
           <div class="flag-img w-28 h-20 rounded-xl overflow-hidden shadow-md border border-gray-100">
             <div class="h-1/3 bg-[#000000]"></div>
             <div class="h-1/3 bg-[#DD0000]"></div>
             <div class="h-1/3 bg-[#FFCE00]"></div>
           </div>
           <p class="flag-label mt-3 text-navy-900 text-sm font-medium">Germany</p>
-        </div>
+        </a>
+
 
         <!-- Luxembourg -->
-        <div class="flag-card text-center reveal" style="animation-delay:0.15s">
+       <a href="lamub.html" class="flag-card text-center reveal" style="animation-delay:0.15s">
           <div class="flag-img w-28 h-20 rounded-xl overflow-hidden shadow-md border border-gray-100">
             <div class="h-1/3 bg-[#EF3340]"></div>
             <div class="h-1/3 bg-[#ffffff]"></div>
             <div class="h-1/3 bg-[#00A3E0]"></div>
           </div>
           <p class="flag-label mt-3 text-navy-900 text-sm font-medium">Luxembourg</p>
-        </div>
+        </a>
+
 
         <!-- Malta -->
-        <div class="flag-card text-center reveal" style="animation-delay:0.2s">
+      <a href="malta.html" class="flag-card text-center reveal" style="animation-delay:0.2s">
           <div class="flag-img w-28 h-20 rounded-xl overflow-hidden shadow-md border border-gray-100 flex">
             <div class="w-1/2 bg-[#ffffff]"></div>
             <div class="w-1/2 bg-[#CF142B]"></div>
           </div>
           <p class="flag-label mt-3 text-navy-900 text-sm font-medium">Malta</p>
-        </div>
+        </a>
 
-        <!-- New Zealand -->
-        <div class="flag-card text-center reveal" style="animation-delay:0.25s">
-          <div class="flag-img w-28 h-20 rounded-xl overflow-hidden shadow-md border border-gray-100 bg-[#00247D] flex items-center justify-center relative">
-            <div class="absolute inset-0 bg-[#00247D]">
-              <div class="absolute top-0 left-0 w-1/2 h-full">
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <div class="w-full h-1.5 bg-white opacity-80"></div>
-                </div>
-                <div class="absolute inset-0 flex items-center justify-center rotate-90">
-                  <div class="w-full h-1.5 bg-white opacity-80"></div>
-                </div>
-                <div class="absolute inset-0 flex items-center justify-center rotate-45">
-                  <div class="w-full h-1 bg-[#CF142B] opacity-80"></div>
-                </div>
-              </div>
-            </div>
-            <div class="absolute right-2 flex flex-col gap-1 items-center">
-              <span class="text-[#CC142B] text-xs">★</span>
-              <span class="text-[#CC142B] text-xs">★</span>
-              <span class="text-[#CC142B] text-xs">★</span>
-            </div>
+      <!-- New Zealand -->
+        <a href="new-zealand.html" class="flag-card text-center reveal" style="animation-delay:0.25s">
+          <div class="flag-img w-28 h-20 rounded-xl overflow-hidden shadow-md border border-gray-100">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 80" width="112" height="80">
+              <!-- Blue background -->
+              <rect width="112" height="80" fill="#00247D"/>
+              <!-- Union Jack top-left quarter -->
+              <!-- White diagonals (St Andrew) -->
+              <line x1="0" y1="0" x2="56" y2="40" stroke="white" stroke-width="8"/>
+              <line x1="56" y1="0" x2="0" y2="40" stroke="white" stroke-width="8"/>
+              <!-- Red diagonals (St Patrick) -->
+              <line x1="0" y1="0" x2="56" y2="40" stroke="#CC142B" stroke-width="4"/>
+              <line x1="56" y1="0" x2="0" y2="40" stroke="#CC142B" stroke-width="4"/>
+              <!-- White cross (St George) -->
+              <rect x="22" y="0" width="12" height="40" fill="white"/>
+              <rect x="0" y="14" width="56" height="12" fill="white"/>
+              <!-- Red cross (St George) -->
+              <rect x="24" y="0" width="8" height="40" fill="#CC142B"/>
+              <rect x="0" y="16" width="56" height="8" fill="#CC142B"/>
+              <!-- Southern Cross (right side) - 4 red stars with white outline -->
+              <!-- Star A (top) -->
+              <polygon points="84,10 86,16 92,16 87,20 89,26 84,22 79,26 81,20 76,16 82,16" fill="#CC142B" stroke="white" stroke-width="1.5"/>
+              <!-- Star B (right) -->
+              <polygon points="100,28 101.5,33 107,33 103,36 104.5,41 100,38 95.5,41 97,36 93,33 98.5,33" fill="#CC142B" stroke="white" stroke-width="1.5"/>
+              <!-- Star C (bottom) -->
+              <polygon points="90,52 91.5,57 97,57 93,60 94.5,65 90,62 85.5,65 87,60 83,57 88.5,57" fill="#CC142B" stroke="white" stroke-width="1.5"/>
+              <!-- Star D (left) -->
+              <polygon points="72,38 73.5,43 79,43 75,46 76.5,51 72,48 67.5,51 69,46 65,43 70.5,43" fill="#CC142B" stroke="white" stroke-width="1.5"/>
+            </svg>
           </div>
           <p class="flag-label mt-3 text-navy-900 text-sm font-medium">New Zealand</p>
-        </div>
+        </a>
 
         <!-- Saudi Arabia -->
-        <div class="flag-card text-center reveal" style="animation-delay:0.3s">
-          <div class="flag-img w-28 h-20 rounded-xl overflow-hidden shadow-md border border-gray-100 bg-[#006C35] flex items-center justify-center">
-            <div class="text-center">
-              <div class="text-white text-xs leading-none opacity-80">العربية</div>
-              <div class="w-10 h-px bg-white/60 mx-auto mt-1.5"></div>
-            </div>
+         <a href="saudi-arabia.html" class="flag-card text-center reveal" style="animation-delay:0.3s">
+          <div class="flag-img w-28 h-20 rounded-xl overflow-hidden shadow-md border border-gray-100">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 80" width="112" height="80">
+              <rect width="112" height="80" fill="#006C35"/>
+              <text x="56" y="36" text-anchor="middle" fill="white" font-size="13" font-family="serif" opacity="0.95">لا إله إلا الله</text>
+              <line x1="22" y1="54" x2="90" y2="54" stroke="white" stroke-width="3" stroke-linecap="round"/>
+              <polygon points="90,54 82,49 82,59" fill="white"/>
+              <line x1="22" y1="54" x2="28" y2="46" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
           </div>
           <p class="flag-label mt-3 text-navy-900 text-sm font-medium">Saudi Arabia</p>
-        </div>
+        </a>
       </div>
     </div>
   </section>
