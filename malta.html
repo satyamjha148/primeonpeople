@@ -361,9 +361,9 @@
   </section>
 
   <!-- ─── ROLES & SKILLS ───────────────────────────────── -->
-  <section class="py-24 bg-white">
+  <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-14 reveal">
+      <div class="text-center mb-12 reveal">
         <span class="text-gold-500 text-xs font-semibold tracking-widest uppercase">Skills</span>
         <h2 class="font-display text-5xl md:text-6xl font-light text-navy-900 mt-3 leading-tight">
           Roles & Skills <em class="font-semibold not-italic">Commonly Recruited</em>
@@ -412,16 +412,14 @@
     </div>
   </section>
 
-  <!-- ─── HOW WE SUPPORT + WHY US ──────────────────────── -->
-  <section class="py-24 bg-gray-50">
+  <!-- ─── OUR APPROACH ─────────────────────────────────── -->
+  <section class="py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-
-        <!-- How we support -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
         <div class="reveal">
           <span class="text-gold-500 text-xs font-semibold tracking-widest uppercase">Our Approach</span>
           <div class="section-divider"></div>
-          <h2 class="font-display text-4xl font-light text-navy-900 leading-tight mb-8">
+          <h2 class="font-display text-4xl md:text-5xl font-light text-navy-900 leading-tight mb-8">
             How PrimeOnPeople Supports<br/><em class="font-semibold not-italic">Malta Employers</em>
           </h2>
           <ul class="check-list space-y-1">
@@ -430,25 +428,43 @@
             <li>Interview coordination and hiring support</li>
           </ul>
         </div>
-
-        <!-- Why us -->
         <div class="reveal" style="animation-delay:0.15s">
+          <div class="rounded-2xl overflow-hidden shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80" alt="Our Approach" class="w-full h-80 object-cover hover:scale-105 transition-transform duration-700"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHY WORK WITH US ───────────────────────────────── -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
+        <div class="reveal">
           <span class="text-gold-500 text-xs font-semibold tracking-widest uppercase">Why Work With Us</span>
           <div class="section-divider"></div>
-          <h2 class="font-display text-4xl font-light text-navy-900 leading-tight mb-8">
+          <h2 class="font-display text-4xl md:text-5xl font-light text-navy-900 leading-tight mb-6">
             Discuss Your<br/><em class="font-semibold not-italic">Malta Hiring Needs</em>
           </h2>
-          <p class="text-gray-500 text-base leading-relaxed mb-6">
+          <p class="text-gray-500 text-base leading-relaxed mb-8">
             Our employer team is available to review your workforce requirements and connect you with international candidates who are prepared, vetted, and ready for Malta's employment environment.
           </p>
+        </div>
+        <div class="reveal" style="animation-delay:0.15s">
           <ul class="check-list space-y-1">
             <li>Access to pre-screened, role-ready international professionals</li>
             <li>Role-based candidate pools from entry-level to experienced hires</li>
             <li>Clear and structured recruitment processes</li>
             <li>Ongoing communication focused on long-term workforce planning</li>
           </ul>
+          <div class="mt-8">
+            <a href="#contact-form" class="inline-flex items-center gap-2 bg-navy-900 hover:bg-navy-700 text-white font-semibold text-sm px-7 py-3.5 rounded-full transition-all duration-300 hover:-translate-y-0.5">
+              Get In Touch
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+          </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -611,18 +627,17 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
   <script>
     const reveals = document.querySelectorAll('.reveal');
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const delay = parseFloat(entry.target.style.animationDelay || '0') * 1000;
-          setTimeout(() => entry.target.classList.add('visible'), delay);
+          entry.target.classList.add('visible');
           obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    }, { threshold: 0.15 });
     reveals.forEach(el => obs.observe(el));
   </script>
 </body>
