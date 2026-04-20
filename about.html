@@ -134,7 +134,7 @@
   </header>
 
   <!-- ─── PAGE HERO BANNER ──────────────────────────────── -->
-  <section class="relative overflow-hidden" style="padding-top: 64px;">
+  <section class="relative overflow-hidden flex flex-col justify-end" style="padding-top: 64px; height: 620px;">
     <div class="absolute inset-0 about-banner-bg"></div>
     <div class="absolute inset-0 bg-gradient-to-b from-navy-900/65 via-navy-900/50 to-navy-900/75"></div>
     <div class="absolute inset-0 grid-overlay opacity-10"></div>
@@ -142,24 +142,24 @@
     <div class="orb" style="width:400px;height:400px;background:radial-gradient(circle,rgba(201,168,76,0.10),transparent 70%);top:0;right:-8%;animation:float 9s ease-in-out infinite;"></div>
     <div class="orb" style="width:240px;height:240px;background:radial-gradient(circle,rgba(59,130,246,0.07),transparent 70%);bottom:10%;left:-4%;animation:float 13s ease-in-out infinite reverse;"></div>
 
-    <div class="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-20">
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-10">
       <!-- Breadcrumb -->
-      <div class="flex items-center gap-2 mb-7 hero-fade-in" style="animation-delay:0.15s">
+      <div class="flex items-center gap-2 mb-4 hero-fade-in" style="animation-delay:0.15s">
         <a href="index.html" class="text-white/50 text-xs hover:text-gold-300 transition-colors">Home</a>
         <svg class="w-3 h-3 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         <span class="text-gold-300 text-xs">About</span>
       </div>
 
-      <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-gold-400/30 rounded-full px-4 py-1.5 mb-7 hero-fade-in" style="animation-delay:0.2s">
+      <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-gold-400/30 rounded-full px-4 py-1.5 mb-4 hero-fade-in" style="animation-delay:0.2s">
         <span class="w-2 h-2 bg-gold-400 rounded-full animate-pulse"></span>
         <span class="text-gold-300 text-xs font-medium tracking-widest uppercase">Global Talent Mobility</span>
       </div>
 
-      <h1 class="font-display text-6xl md:text-8xl font-light text-white leading-[1.05] max-w-2xl hero-fade-in" style="animation-delay:0.4s">
+      <h1 class="font-display text-5xl md:text-6xl font-light text-white leading-[1.05] max-w-2xl hero-fade-in" style="animation-delay:0.4s">
         About
       </h1>
 
-      <p class="text-white/60 text-lg mt-5 max-w-xl leading-relaxed hero-fade-in" style="animation-delay:0.6s">
+      <p class="text-white/60 text-base mt-4 max-w-xl leading-relaxed hero-fade-in" style="animation-delay:0.6s">
         A global talent mobility company built on transparency, structure, and genuine care for every candidate and employer we serve.
       </p>
     </div>
@@ -264,8 +264,8 @@
         </h2>
       </div>
 
-      <!-- All 4 members in one row -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Team members -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
 
         <!-- Pratima -->
         <div class="team-card reveal" style="animation-delay:0.1s">
@@ -306,20 +306,6 @@
             <p class="font-semibold text-navy-900 text-base">Khushboo Sharma</p>
             <p class="text-gold-500 text-sm font-medium mt-0.5">Strategic Advisor</p>
             <p class="text-gray-400 text-xs leading-relaxed mt-2">Expert in international recruitment strategy, guiding market expansion and employer engagement across regulated sectors.</p>
-          </div>
-        </div>
-
-        <!-- Sandeep Kaur -->
-        <div class="team-card reveal" style="animation-delay:0.4s">
-          <div class="bg-[#1B3F7E] rounded-2xl overflow-hidden flex flex-col items-center justify-center p-8 pb-0 h-72">
-            <div class="w-44 h-44 rounded-full border-4 border-white/60 overflow-hidden flex-shrink-0">
-              <img src="sandeep.png?w=400&q=80" alt="Sandeep Kaur" class="w-full h-full object-cover object-top" />
-            </div>
-          </div>
-          <div class="pt-5 pb-2 px-2">
-            <p class="font-semibold text-navy-900 text-base">Sandeep Kaur</p>
-            <p class="text-gold-500 text-sm font-medium mt-0.5">Healthcare Advisory Lead, Germany</p>
-            <p class="text-gray-400 text-xs leading-relaxed mt-2">Specialist in German healthcare recruitment, supporting nurses, doctors, and allied health professionals with credential recognition and placement.</p>
           </div>
         </div>
 
@@ -505,7 +491,11 @@
           <ul class="space-y-3 text-white/40 text-sm">
             <li class="flex gap-2">
               <svg class="w-4 h-4 mt-0.5 text-gold-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-              <span>Wave City Ghaziabad, Uttar Pradesh 201001<br/>Tilak Nagar – New Delhi 110018</span>
+              <span>Wave City Ghaziabad, Uttar Pradesh 201001</span>
+            </li>
+            <li class="flex gap-2">
+              <svg class="w-4 h-4 mt-0.5 text-gold-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span>Tilak Nagar – New Delhi 110018</span>
             </li>
             <li class="flex gap-2">
               <svg class="w-4 h-4 mt-0.5 text-gold-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
