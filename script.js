@@ -1,3 +1,12 @@
+/* ─── BFCACHE RELOAD ──────────────────────────────────────── */
+// Tailwind CDN injects styles at runtime; bfcache restores can leave the
+// page unstyled. Force a fresh load when the browser restores from bfcache.
+window.addEventListener('pageshow', (event) => {
+  if (event.persisted || (performance.getEntriesByType('navigation')[0]?.type === 'back_forward')) {
+    window.location.reload();
+  }
+});
+
 /* ─── NAVBAR SCROLL EFFECT ────────────────────────────────── */
 const navbar = document.getElementById('navbar');
 
