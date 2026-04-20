@@ -16,7 +16,7 @@ python3 -m http.server 8000
 
 ## Architecture
 
-**Pages.** Each `.html` file is a standalone page with its own `<head>`, inline `<style>`, and inline `tailwind.config`. They share [style.css](style.css) and [script.js](script.js) (linked at the bottom of every page). Navigation is plain anchor links between files.
+**Pages.** Each `.html` file is a standalone page with its own `<head>`, inline `<style>`, and inline `tailwind.config`. They share [styles.css](styles.css) and [script.js](script.js) (linked at the bottom of every page). Navigation is plain anchor links between files.
 
 - Core: [index.html](index.html), [about.html](about.html), [employers.html](employers.html), [jobs.html](jobs.html), [careers.html](careers.html), [contact.html](contact.html)
 - Country landing pages: [germany.html](germany.html), [malta.html](malta.html), [new-zealand.html](new-zealand.html), [saudi-arabia.html](saudi-arabia.html), [lamub.html](lamub.html)
@@ -34,6 +34,6 @@ python3 -m http.server 8000
 
 When adding interactive elements, prefer reusing these hook class/ID names so the existing script picks them up — don't duplicate the logic inline.
 
-## Known inconsistency
+## Deployment
 
-All HTML files link `<link rel="stylesheet" href="styles.css" />`, but the file on disk is [style.css](style.css) (singular). The site currently runs on inline `<style>` blocks + Tailwind CDN; the external stylesheet 404s. Fix by either renaming the file to `styles.css` or updating the `<link>` tags — confirm with the user which they want before changing.
+Site ships via Vercel. [vercel.json](vercel.json) sets `cleanUrls: false` + `trailingSlash: false` so URLs stay exactly as linked (`/about.html`, not `/about`) — otherwise Vercel's default 308 redirects break browser back-button history on a plain multi-page static site.

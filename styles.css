@@ -1,0 +1,795 @@
+/* ─── CSS VARIABLES ───────────────────────────────────────── */
+:root {
+  --navy-900: #0A1628;
+  --navy-800: #0F2040;
+  --gold-400: #C9A84C;
+  --gold-300: #E0C97A;
+}
+
+/* ─── GLOBAL ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NAVBAR — transparent at top, solid white on scroll ── */
+#navbar {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+
+  transition: background 0.4s ease,
+              box-shadow 0.4s ease,
+              padding 0.35s ease,
+              border-color 0.35s ease;
+}
+
+/* ── Transparent state: force all nav text WHITE ── */
+#navbar:not(.scrolled) .nav-link,
+#navbar:not(.scrolled) .logo-text {
+  color: rgba(255, 255, 255, 0.90) !important;
+}
+#navbar:not(.scrolled) #mobile-menu-btn {
+  color: #ffffff !important;
+}
+
+/* Once scrolled — fully solid white */
+#navbar.scrolled {
+  background: #ffffff;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-top: none;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0 4px 24px rgba(10, 22, 40, 0.10);
+}
+
+/* ── Scrolled state: force all nav text DARK NAVY ── */
+#navbar.scrolled .nav-link,
+#navbar.scrolled .logo-text {
+  color: #0A1628 !important;
+}
+#navbar.scrolled .nav-link:hover,
+#navbar.scrolled .logo-text:hover {
+  color: #C9A84C !important;
+}
+#navbar.scrolled #mobile-menu-btn {
+  color: #0A1628 !important;
+}
+#navbar.scrolled #mobile-menu-btn:hover {
+  background: rgba(10, 22, 40, 0.06) !important;
+}
+
+/* ─── HERO ────────────────────────────────────────────────── */
+.hero-bg {
+  background-image:
+    url('https://images.unsplash.com/photo-1500835556837-99ac94a94552?w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(201,168,76,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.05) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.orb-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(201,168,76,0.12), transparent 70%);
+  top: 10%;
+  right: -10%;
+  animation: float 8s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(59,130,246,0.08), transparent 70%);
+  bottom: 20%;
+  left: -5%;
+  animation: float 12s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-30px) scale(1.05); }
+}
+
+/* ─── HERO FADE IN ────────────────────────────────────────── */
+.hero-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: heroFadeIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes heroFadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── SCROLL LINE ─────────────────────────────────────────── */
+.scroll-line {
+  animation: scrollDown 2s ease-in-out infinite;
+}
+
+@keyframes scrollDown {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ─── REVEAL ON SCROLL ────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── CARD HOVER ──────────────────────────────────────────── */
+.card-hover {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(10, 22, 40, 0.25);
+}
+
+/* ─── PROCESS BG ──────────────────────────────────────────── */
+.process-bg {
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(10,22,40,0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(201,168,76,0.03) 0%, transparent 50%);
+}
+
+/* ─── TRUST SECTION BG ────────────────────────────────────── */
+.trust-bg {
+  background-image:
+    radial-gradient(ellipse at top right, rgba(201,168,76,0.08), transparent 60%),
+    radial-gradient(ellipse at bottom left, rgba(59,130,246,0.05), transparent 60%);
+}
+
+/* ─── TRUST STAT CARD ─────────────────────────────────────── */
+.trust-stat-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trust-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+/* ─── PROCESS CARD ────────────────────────────────────────── */
+.process-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.process-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(201,168,76,0.03));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.process-card:hover::before {
+  opacity: 1;
+}
+
+/* ─── TESTIMONIAL ─────────────────────────────────────────── */
+.testimonial-slide {
+  min-width: 100%;
+}
+
+/* ─── COUNTER ─────────────────────────────────────────────── */
+.counter, .counter2 {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── CUSTOM SCROLLBAR ────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--navy-900); }
+::-webkit-scrollbar-thumb {
+  background: rgba(201,168,76,0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(201,168,76,0.7); }
+
+/* ─── SELECTION ───────────────────────────────────────────── */
+::selection {
+  background: rgba(201,168,76,0.3);
+  color: var(--navy-900);
+}
+
+/* ─── FOCUS STATES ────────────────────────────────────────── */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--gold-400);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE / MEDIA QUERIES
+   Breakpoints: xs<480 | sm<640 | md<768 | lg<1024 | xl<1280 | 2xl+
+═══════════════════════════════════════════════════════════ */
+
+/* ── 2XL (1536px+) ─────────────────────────────────────── */
+@media (min-width: 1536px) {
+  #navbar .nav-container { padding-left: 80px; padding-right: 80px; }
+}
+
+/* ── XL (1280px – 1535px) ──────────────────────────────── */
+@media (max-width: 1279px) {
+  #navbar .nav-container { padding-left: 40px; padding-right: 40px; }
+}
+
+/* ── LG (1024px – 1279px) ──────────────────────────────── */
+@media (max-width: 1023px) {
+  #navbar .nav-container { padding-left: 28px; padding-right: 28px; }
+}
+
+/* ── MD / TABLET (768px – 1023px) ─────────────────────── */
+@media (max-width: 1023px) and (min-width: 768px) {
+  #hero h1 { font-size: 4.5rem; }
+}
+
+/* ── MOBILE (< 768px) ──────────────────────────────────── */
+@media (max-width: 767px) {
+  .hero-bg { background-attachment: scroll; }
+  .orb-1 { width: 280px; height: 280px; }
+  .orb-2 { width: 160px; height: 160px; }
+}
+
+/* ── SM (< 640px) ──────────────────────────────────────── */
+@media (max-width: 639px) {
+  #hero h1 { font-size: 2.8rem; }
+}
+
+/* ── XS (< 480px) ──────────────────────────────────────── */
+@media (max-width: 479px) {
+  #navbar { padding-top: 10px; padding-bottom: 10px; }
+  #navbar .nav-container { padding-left: 16px; padding-right: 16px; }
+}
+
+/* ─── GOLD LINE ACCENT ────────────────────────────────────── */
+.gold-line {
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  background: var(--gold-400);
+  vertical-align: middle;
+}
+
+/* ─── LOADING ANIMATION ───────────────────────────────────── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ─── NAV ACTIVE LINK ─────────────────────────────────────── */
+.nav-link.active {
+  color: var(--gold-400) !important;
+}
+
+.nav-link.active::after {
+  width: 100% !important;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   EXTENDED MEDIA QUERIES — All Breakpoints
+═══════════════════════════════════════════════════════════ */
+
+/* ─── 2XL screens (1536px+) — Large monitors ──────────── */
+@media (min-width: 1536px) {
+  #navbar .nav-container {
+    padding-left: 96px;
+    padding-right: 96px;
+  }
+}
+
+/* ─── Laptop/Desktop (1024px–1279px) ──────────────────── */
+@media (max-width: 1279px) and (min-width: 1024px) {
+  #navbar .nav-container {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+}
+
+/* ─── Tablet landscape (768px–1023px) ─────────────────── */
+@media (max-width: 1023px) and (min-width: 768px) {
+  #navbar .nav-container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  #hero h1 { font-size: 4rem !important; }
+  .hero-stats-grid { gap: 1.5rem; }
+}
+
+/* ─── Tablet portrait / large mobile (640px–767px) ────── */
+@media (max-width: 767px) {
+  #hero { padding-top: 7rem !important; }
+  .hero-bg { background-attachment: scroll; }
+  .orb-1, .orb-2 { display: none; }
+  .scroll-line-wrap { display: none; }
+
+  /* Sections */
+  section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+
+  /* Career image grid: single col */
+  .career-images-col { display: none; }
+
+  /* Footer 2-col */
+  .footer-brand-col { grid-column: span 2; }
+}
+
+/* ─── Mobile (480px–639px) ─────────────────────────────── */
+@media (max-width: 639px) {
+  #hero h1 { font-size: 2.6rem !important; line-height: 1.1; }
+  #hero .hero-subtitle { font-size: 0.9rem; }
+  #hero .hero-cta-group { flex-direction: column; align-items: stretch; }
+  #hero .hero-cta-group a { text-align: center; justify-content: center; }
+  #hero .hero-stats-grid { grid-template-columns: repeat(3,1fr); }
+  #hero .hero-stats-grid .stat-val { font-size: 2rem; }
+
+  section h2 { font-size: 2.2rem !important; }
+  section .section-sub { font-size: 0.875rem; }
+
+  /* Process cards: 1 col */
+  .process-cards-grid { grid-template-columns: 1fr !important; }
+
+  /* Testimonials */
+  .testimonial-inner { padding: 1.75rem !important; }
+  .testimonial-quote { font-size: 1.15rem !important; }
+
+  /* Trust stat grid */
+  .trust-stats-grid { grid-template-columns: 1fr 1fr !important; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr 1fr !important; }
+}
+
+/* ─── Small mobile (< 480px) ──────────────────────────── */
+@media (max-width: 479px) {
+  #navbar { padding-top: 10px !important; padding-bottom: 10px !important; }
+  #navbar .nav-container {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+  #navbar .logo-text { font-size: 1rem; }
+  #navbar .logo-icon { width: 34px !important; height: 34px !important; }
+
+  #hero h1 { font-size: 2rem !important; }
+  #hero .hero-badge { font-size: 0.65rem; padding: 6px 12px; }
+
+  section { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  section h2 { font-size: 1.8rem !important; }
+
+  /* Stats: stack vertically */
+  #hero .hero-stats-grid {
+    grid-template-columns: repeat(3,1fr);
+    gap: 0.5rem;
+  }
+  #hero .hero-stats-grid .stat-val { font-size: 1.6rem; }
+  #hero .hero-stats-grid .stat-label { font-size: 0.6rem; }
+
+  /* Process card */
+  .process-card { padding: 1rem !important; }
+  .process-icon-box { width: 44px !important; height: 44px !important; }
+  .process-icon-box svg { width: 22px !important; height: 22px !important; }
+
+  /* Trust stats: 1 col */
+  .trust-stats-grid { grid-template-columns: 1fr !important; }
+
+  /* Testimonials reduced */
+  .testimonial-inner { padding: 1.25rem !important; }
+  .testimonial-quote { font-size: 1rem !important; line-height: 1.6; }
+  .testimonial-controls { flex-direction: column-reverse; gap: 1rem; align-items: center; }
+
+  /* Footer: single col */
+  .footer-grid { grid-template-columns: 1fr !important; }
+  .footer-social { justify-content: flex-start; }
+}
+/* ═══════════════════════════════════════════════════════════
+   COMPREHENSIVE HOVER SYSTEM — SITE-WIDE
+   Covers: buttons, cards, nav, images, social, footer, forms
+═══════════════════════════════════════════════════════════ */
+
+/* ─── 1. BUTTON SHIMMER SWEEP ─────────────────────────────── */
+/* Applies to all rounded-full CTA buttons */
+a[class*="rounded-full"],
+button[class*="rounded-full"] {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+a[class*="rounded-full"]::after,
+button[class*="rounded-full"]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255,255,255,0.28) 50%,
+    transparent 65%
+  );
+  background-size: 250% 100%;
+  background-position: 200% 0;
+  transition: background-position 0.55s ease;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+a[class*="rounded-full"]:hover::after,
+button[class*="rounded-full"]:hover::after {
+  background-position: -60% 0;
+}
+
+/* ─── 2. CARD-HOVER — 3D TILT + GLOW ─────────────────────── */
+.card-hover {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.5s ease;
+  will-change: transform;
+}
+
+.card-hover:hover {
+  transform: translateY(-10px) scale(1.015);
+  box-shadow:
+    0 40px 80px rgba(10, 22, 40, 0.28),
+    0 0 0 1px rgba(201, 168, 76, 0.15);
+}
+
+/* Image zoom inside card-hover */
+.card-hover img {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-hover:hover img {
+  transform: scale(1.08);
+}
+
+/* ─── 3. PROCESS CARD — LEFT GOLD BORDER SWEEP ───────────── */
+.process-card {
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s ease;
+  border-left: 3px solid transparent;
+}
+
+.process-card::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -3px;
+  width: 3px;
+  height: 0%;
+  background: var(--gold-400);
+  border-radius: 0 2px 2px 0;
+  transform: translateY(-50%);
+  transition: height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.process-card:hover {
+  transform: translateY(-8px) translateX(4px);
+  box-shadow: 0 28px 56px rgba(10, 22, 40, 0.14);
+}
+
+.process-card:hover::after {
+  height: 60%;
+}
+
+/* Icon box inside process card — spin on hover */
+.process-card .group:hover .w-14 {
+  transform: rotate(-8deg) scale(1.08);
+}
+
+/* ─── 4. TRUST STAT CARDS — NUMBER SCALE + SHIMMER ──────── */
+.trust-stat-card {
+  transition: transform 0.35s ease,
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+  cursor: default;
+}
+
+.trust-stat-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+/* Number inside stat card pops up */
+.trust-stat-card:hover .font-display {
+  transform: scale(1.06);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.trust-stat-card .font-display {
+  transition: transform 0.35s ease;
+  display: block;
+}
+
+/* ─── 5. WHY CARD — BORDER GLOW + ICON BOUNCE ────────────── */
+.why-card {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s ease,
+              border-color 0.4s ease;
+  border: 1px solid #f0f0f0;
+}
+
+.why-card:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 30px 60px rgba(10, 22, 40, 0.12),
+    0 0 0 2px rgba(201, 168, 76, 0.25);
+  border-color: transparent;
+}
+
+/* Icon box in why-card bounces */
+.why-card:hover .w-14.rounded-xl {
+  animation: iconBounce 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes iconBounce {
+  0%   { transform: scale(1) rotate(0deg); }
+  30%  { transform: scale(1.18) rotate(-6deg); }
+  60%  { transform: scale(0.95) rotate(3deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* ─── 6. FOOTER MENU LINKS — SLIDE + GOLD DOT ────────────── */
+footer a[class*="text-white/40"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  position: relative;
+  transition: color 0.25s ease, gap 0.25s ease, padding-left 0.25s ease;
+}
+
+footer a[class*="text-white/40"]::before {
+  content: '→';
+  display: inline-block;
+  font-size: 0.75rem;
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  transition: max-width 0.3s ease, opacity 0.3s ease, margin-right 0.3s ease;
+  margin-right: 0;
+  color: var(--gold-400);
+}
+
+footer a[class*="text-white/40"]:hover::before {
+  opacity: 1;
+  max-width: 24px;
+  margin-right: 6px;
+}
+
+/* ─── 7. SOCIAL ICON BUTTONS — SPIN + SCALE ──────────────── */
+footer a[class*="rounded-full"][class*="bg-white/10"] {
+  transition: background 0.3s ease,
+              transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s ease;
+}
+
+footer a[class*="rounded-full"][class*="bg-white/10"]:hover {
+  transform: translateY(-4px) rotate(8deg) scale(1.15);
+  box-shadow: 0 12px 24px rgba(201, 168, 76, 0.3);
+}
+
+footer a[class*="rounded-full"][class*="bg-white/10"]:hover svg {
+  animation: iconPop 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes iconPop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.3) rotate(-10deg); }
+  100% { transform: scale(1); }
+}
+
+/* ─── 8. NAV LOGO — SUBTLE SPIN ON HOVER ─────────────────── */
+header a .rounded-full svg {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+header a:hover .rounded-full svg {
+  transform: rotate(20deg) scale(1.08);
+}
+
+/* ─── 9. NAV LINKS — MAGNETIC GOLD GLOW ──────────────────── */
+.nav-link {
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold-400), var(--gold-300));
+  transform: translateX(-50%);
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 2px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ─── 10. PROCESS STEP CARDS (employers/careers pages) ──── */
+.process-step {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s ease;
+  overflow: hidden;
+}
+
+.process-step:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 32px 64px rgba(10, 22, 40, 0.18),
+    0 0 0 2px rgba(201, 168, 76, 0.2);
+}
+
+/* Number badge in step card pops */
+.process-step:hover .absolute.rounded-full {
+  transform: scale(1.15);
+  background: var(--gold-400) !important;
+  transition: transform 0.35s ease, background 0.35s ease;
+}
+
+.process-step .absolute.rounded-full {
+  transition: transform 0.35s ease, background 0.35s ease;
+}
+
+/* ─── 11. GALLERY IMAGES — COLOUR OVERLAY SWEEP ──────────── */
+.rounded-2xl.overflow-hidden {
+  position: relative;
+}
+
+.rounded-2xl.overflow-hidden::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(201, 168, 76, 0.15) 0%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.rounded-2xl.overflow-hidden:hover::after {
+  opacity: 1;
+}
+
+/* ─── 12. FORM INPUTS — GOLD GLOW FOCUS ─────────────────── */
+.form-input {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus {
+  border-bottom-color: var(--gold-400);
+  box-shadow: 0 4px 0 -3px var(--gold-400);
+  outline: none;
+}
+
+/* ─── 13. TESTIMONIAL SLIDER BUTTONS ─────────────────────── */
+#prev-btn, #next-btn {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.3s ease,
+              color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+#prev-btn:hover {
+  transform: translateX(-4px) scale(1.08);
+}
+
+#next-btn:hover {
+  transform: translateX(4px) scale(1.08);
+  box-shadow: 0 8px 24px rgba(201, 168, 76, 0.4);
+}
+
+/* ─── 14. SERVICE CARDS (employers page) ─────────────────── */
+.service-card {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s ease,
+              border-color 0.4s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-12px) scale(1.01);
+  box-shadow:
+    0 40px 80px rgba(10, 22, 40, 0.14),
+    0 0 0 1.5px rgba(201, 168, 76, 0.2);
+}
+
+/* ─── 15. INLINE ARROW LINKS — GAP EXPAND ────────────────── */
+a[class*="hover:gap"] {
+  transition: gap 0.3s ease, color 0.3s ease;
+}
+
+/* ─── 16. MOBILE MENU ITEMS ───────────────────────────────── */
+#mobile-menu a {
+  transition: background 0.25s ease,
+              color 0.25s ease,
+              padding-left 0.25s ease,
+              transform 0.25s ease;
+}
+
+#mobile-menu a:hover {
+  padding-left: 1.25rem !important;
+}
+
+/* ─── 17. SCROLL INDICATOR — PULSE ON HOVER ──────────────── */
+.scroll-line-wrap:hover .scroll-line {
+  animation-duration: 1.2s;
+}
+
+/* ─── 18. GOLD SECTION LABELS — LETTER SPACING EXPAND ──── */
+span[class*="tracking-widest"] {
+  transition: letter-spacing 0.4s ease, opacity 0.3s ease;
+}
+
+span[class*="tracking-widest"]:hover {
+  letter-spacing: 0.22em;
+}
+
+/* ─── 19. APPROACH LIST ITEMS ─────────────────────────────── */
+li[class*="flex gap-4 items-start"] {
+  transition: transform 0.3s ease;
+}
+
+li[class*="flex gap-4 items-start"]:hover {
+  transform: translateX(6px);
+}
+
+li[class*="flex gap-4 items-start"]:hover .rounded-full.bg-navy-800 {
+  background: var(--gold-400);
+  color: var(--navy-900);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ─── 20. FOOTER CTA / BOTTOM TAGLINE ────────────────────── */
+footer .pt-8 a {
+  transition: color 0.25s ease;
+}
+
+footer .pt-8 a:hover {
+  color: var(--gold-300) !important;
+}
