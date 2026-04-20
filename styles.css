@@ -16,56 +16,16 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ─── NAVBAR — transparent at top, solid white on scroll ── */
+/* ─── NAVBAR ────────────────────────────────────────────────
+   Navbar is always solid white across every page via per-page
+   inline CSS in each HTML <head>. Colours for nav-link / logo /
+   mobile-menu-btn are set there too. Only the subtle scroll-state
+   shadow upgrade lives here. */
 #navbar {
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
-  box-shadow: none;
-
   transition: background 0.4s ease,
               box-shadow 0.4s ease,
               padding 0.35s ease,
               border-color 0.35s ease;
-}
-
-/* ── Transparent state: force all nav text WHITE ── */
-#navbar:not(.scrolled) .nav-link,
-#navbar:not(.scrolled) .logo-text {
-  color: rgba(255, 255, 255, 0.90) !important;
-}
-#navbar:not(.scrolled) #mobile-menu-btn {
-  color: #ffffff !important;
-}
-
-/* Once scrolled — fully solid white */
-#navbar.scrolled {
-  background: #ffffff;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border-top: none;
-  border-bottom: 1px solid rgba(201, 168, 76, 0.25);
-  padding-top: 10px;
-  padding-bottom: 10px;
-  box-shadow: 0 4px 24px rgba(10, 22, 40, 0.10);
-}
-
-/* ── Scrolled state: force all nav text DARK NAVY ── */
-#navbar.scrolled .nav-link,
-#navbar.scrolled .logo-text {
-  color: #0A1628 !important;
-}
-#navbar.scrolled .nav-link:hover,
-#navbar.scrolled .logo-text:hover {
-  color: #C9A84C !important;
-}
-#navbar.scrolled #mobile-menu-btn {
-  color: #0A1628 !important;
-}
-#navbar.scrolled #mobile-menu-btn:hover {
-  background: rgba(10, 22, 40, 0.06) !important;
 }
 
 /* ─── HERO ────────────────────────────────────────────────── */
