@@ -354,6 +354,44 @@ document.querySelectorAll('footer .flex.gap-3 a').forEach((icon, i) => {
     icon.style.transform = '';
   });
 });
+/* ─── FORM → EMAIL (mailto) ─────────────────────────────── */
+// Shared submit handler for every contact/enquiry form on the site.
+// Collects the values keyed by their visible label, then opens the user's
+// default mail client pre-filled with the data, addressed to the site owner.
+const SITE_CONTACT_EMAIL = 'satyamjha9911@gmail.com';
+
+function sendFormByEmail(form) {
+  const fields = Array.from(form.querySelectorAll('input, textarea, select'))
+    .filter(el => el.type !== 'submit' && el.type !== 'button' && el.type !== 'hidden');
+
+  for (const el of fields) {
+    if (el.required && !el.value.trim()) {
+      el.focus();
+      alert('Please fill in all required fields.');
+      return false;
+    }
+  }
+
+  const lines = fields.map(el => {
+    const label = el.parentElement && el.parentElement.querySelector('label');
+    const name = label
+      ? label.textContent.replace(/\*/g, '').trim()
+      : (el.name || el.placeholder || 'Field');
+    return `${name}: ${(el.value || '').trim()}`;
+  });
+
+  const pageTitle = (document.title || 'Website').trim();
+  const subject = `New enquiry — ${pageTitle}`;
+  const body = `${lines.join('\n')}\n\n---\nSent from: ${window.location.href}`;
+
+  window.location.href =
+    `mailto:${SITE_CONTACT_EMAIL}` +
+    `?subject=${encodeURIComponent(subject)}` +
+    `&body=${encodeURIComponent(body)}`;
+
+  return false;
+}
+
 /* ─── TERN-STYLE SCROLL REVEAL (images + cards + content) ── */
 (function () {
   const style = document.createElement('style');
