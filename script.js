@@ -358,7 +358,7 @@ document.querySelectorAll('footer .flex.gap-3 a').forEach((icon, i) => {
 // Shared submit handler for every contact/enquiry form on the site.
 // Collects the values keyed by their visible label, then opens the user's
 // default mail client pre-filled with the data, addressed to the site owner.
-const SITE_CONTACT_EMAIL = 'satyamjha9911@gmail.com';
+const SITE_CONTACT_EMAIL = 'info@primeonpeople.com';
 
 function sendFormByEmail(form) {
   const fields = Array.from(form.querySelectorAll('input, textarea, select'))
