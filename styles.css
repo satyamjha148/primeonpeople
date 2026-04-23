@@ -753,3 +753,82 @@ footer .pt-8 a {
 footer .pt-8 a:hover {
   color: var(--gold-300) !important;
 }
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE READABILITY
+   Bumps key text + interactive elements on small screens so
+   everything feels legible on a phone. Desktop layouts untouched.
+═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+  /* Bump the two smallest Tailwind sizes — affects body copy,
+     card descriptions, footer links, etc. sitewide */
+  .text-xs { font-size: 0.8rem !important; }
+  .text-sm { font-size: 0.95rem !important; line-height: 1.65; }
+  .text-base { line-height: 1.7; }
+
+  /* Tiny all-caps section labels — loosen tracking so they breathe */
+  span[class*="text-xs"][class*="tracking-widest"] {
+    font-size: 0.82rem !important;
+    letter-spacing: 0.16em !important;
+  }
+
+  /* Card titles inside sections */
+  section h3 { font-size: 1.35rem; line-height: 1.3; }
+
+  /* Buttons & CTAs — bigger, more tappable, readable text */
+  a[class*="rounded-full"],
+  button[class*="rounded-full"] {
+    font-size: 0.95rem !important;
+    padding-top: 0.95rem !important;
+    padding-bottom: 0.95rem !important;
+  }
+
+  /* Form inputs — 16px stops iOS from zooming on focus.
+     Also widens the vertical padding so fields feel tappable. */
+  .form-input,
+  input.form-input,
+  textarea.form-input {
+    font-size: 16px !important;
+    padding-top: 0.9rem !important;
+    padding-bottom: 0.9rem !important;
+  }
+  form label { font-size: 0.88rem !important; }
+
+  /* Mobile menu items — proper tap targets */
+  #mobile-menu a {
+    font-size: 1rem !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  /* Testimonial quote — avoid feeling cramped on phones */
+  .testimonial-slide p[class*="text-2xl"] {
+    font-size: 1.2rem !important;
+    line-height: 1.55;
+  }
+
+  /* Footer address/phone/email rows — were cramped on phones */
+  footer li.flex.gap-2 span,
+  footer li.flex.gap-2 a { font-size: 0.95rem; }
+
+  /* Office cards on contact page — grid of address/email/tel */
+  .office-card { font-size: 0.95rem; }
+}
+
+/* Very small phones (< 480px) — one extra nudge */
+@media (max-width: 479px) {
+  a[class*="rounded-full"],
+  button[class*="rounded-full"] {
+    font-size: 0.9rem !important;
+    padding-left: 1.35rem !important;
+    padding-right: 1.35rem !important;
+  }
+
+  .testimonial-slide p[class*="text-2xl"] {
+    font-size: 1.1rem !important;
+  }
+
+  /* Hero stats: prevent number overflow on narrow phones */
+  #hero .counter { font-size: 2rem; }
+}
