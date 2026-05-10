@@ -297,10 +297,51 @@ button:focus-visible {
 
 /* ─── Tablet portrait / large mobile (640px–767px) ────── */
 @media (max-width: 767px) {
-  #hero { padding-top: 7rem !important; }
+  /* Stop the hero from being a full-screen banner on phones —
+     let it size to its content with comfortable padding instead */
+  #hero {
+    min-height: auto !important;
+    padding-top: 6rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+  #hero .pt-28 { padding-top: 0 !important; }
+  #hero .pb-20 { padding-bottom: 0 !important; }
+  /* Hide the bottom "Scroll" indicator on phones — section is too short */
+  #hero .absolute.bottom-8 { display: none !important; }
+
   .hero-bg { background-attachment: scroll; }
   .orb-1, .orb-2 { display: none; }
   .scroll-line-wrap { display: none; }
+
+  /* Hero subtitle — target the actual class the HTML uses */
+  #hero p[class*="text-white/60"] {
+    font-size: 1rem !important;
+    line-height: 1.55;
+    margin-top: 1.1rem !important;
+  }
+
+  /* Hero CTAs — readable, tappable */
+  #hero a[class*="rounded-full"] {
+    font-size: 0.95rem !important;
+    padding: 0.85rem 1.3rem !important;
+  }
+
+  /* Hero stat numbers — proportional to the smaller hero */
+  #hero .counter {
+    font-size: 2.2rem !important;
+  }
+  /* Stat labels (CANDIDATES PLACED etc.) — readable but subtle */
+  #hero .grid-cols-3 p {
+    font-size: 0.65rem !important;
+    margin-top: 0.4rem !important;
+    line-height: 1.3;
+  }
+  /* Hero badge ("TRUSTED INTERNATIONAL HIRING") */
+  #hero .text-gold-300[class*="tracking-widest"] {
+    font-size: 0.68rem !important;
+  }
+  /* Tighter top spacing between hero stats and the buttons */
+  #hero .grid-cols-3 { margin-top: 3rem !important; }
 
   /* Sections */
   section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
@@ -314,7 +355,7 @@ button:focus-visible {
 
 /* ─── Mobile (480px–639px) ─────────────────────────────── */
 @media (max-width: 639px) {
-  #hero h1 { font-size: 2.6rem !important; line-height: 1.1; }
+  #hero h1 { font-size: 2.15rem !important; line-height: 1.12; }
   #hero .hero-subtitle { font-size: 0.9rem; }
   #hero .hero-cta-group { flex-direction: column; align-items: stretch; }
   #hero .hero-cta-group a { text-align: center; justify-content: center; }
@@ -348,7 +389,7 @@ button:focus-visible {
   #navbar .logo-text { font-size: 1rem; }
   #navbar .logo-icon { width: 34px !important; height: 34px !important; }
 
-  #hero h1 { font-size: 2rem !important; }
+  #hero h1 { font-size: 1.85rem !important; line-height: 1.12; }
   #hero .hero-badge { font-size: 0.65rem; padding: 6px 12px; }
 
   section { padding-top: 3.5rem; padding-bottom: 3.5rem; }
